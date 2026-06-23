@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f766e" />
+  <title>ලංකා Rain Live</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="preconnect" href="https://api.open-meteo.com" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Sri Lanka Rain Monitor</p>
+        <h1>ලංකා වැසි තත්ත්වය</h1>
+        <p class="sub">ඔබගේ ප්‍රදේශයේ real-time වැසි අවදානම, වැසි ප්‍රමාණය, උෂ්ණත්වය සහ ආර්ද්‍රතාවය සිංහලෙන් බලන්න.</p>
+      </div>
+      <button id="refreshBtn" class="icon-btn" aria-label="Refresh">↻</button>
+    </section>
+
+    <section class="search-card">
+      <label for="citySearch">ප්‍රදේශය තෝරන්න / සොයන්න</label>
+      <input id="citySearch" list="cityList" type="search" placeholder="උදා: කොළඹ, මහනුවර, ගාල්ල" autocomplete="off" />
+      <datalist id="cityList"></datalist>
+      <button id="searchBtn" class="search-btn" type="button">Search Weather</button>
+      <div class="quick-actions">
+        <button id="useLocationBtn">📍 මගේ ස්ථානය</button>
+        <button id="colomboBtn">කොළඹ</button>
+        <button id="kandyBtn">මහනුවර</button>
+      </div>
+    </section>
+
+    <section id="status" class="status hidden"></section>
+
+    <section class="weather-grid">
+      <article class="main-card glass">
+        <div class="place-row">
+          <div>
+            <p class="muted">තෝරාගත් ප්‍රදේශය</p>
+            <h2 id="placeName">-</h2>
+          </div>
+          <div class="weather-mark"><span id="weatherEmoji">🌦️</span><span id="rainBadge" class="rain-badge">-</span></div>
+        </div>
+        <div class="rain-meter">
+          <div id="rainMeterFill"></div>
+        </div>
+        <p id="rainSummary" class="rain-summary">ප්‍රදේශයක් තෝරන්න.</p>
+        <p id="rainTime" class="rain-time">වැසි ආරම්භ වෙන වෙලාව මෙතැන පෙන්වයි.</p>
+        <p id="lastUpdated" class="muted small"></p>
+      </article>
+
+      <article class="metric-card"><span>🌧️</span><p>වැසි සම්භාවිතාව</p><strong id="rainProb">-</strong></article>
+      <article class="metric-card"><span>💧</span><p>වැසි ප්‍රමාණය</p><strong id="rainMm">-</strong></article>
+      <article class="metric-card"><span>🌡️</span><p>උෂ්ණත්වය</p><strong id="temp">-</strong></article>
+      <article class="metric-card"><span>☁️</span><p>වලාකුළු</p><strong id="cloud">-</strong></article>
+      <article class="metric-card"><span>💦</span><p>ආර්ද්‍රතාවය</p><strong id="humidity">-</strong></article>
+      <article class="metric-card"><span>🌬️</span><p>සුළං වේගය</p><strong id="wind">-</strong></article>
+    </section>
+
+    <section class="forecast-card glass">
+      <div class="section-head">
+        <h3>ඊළඟ පැය 12 වැසි අනාවැකිය</h3>
+        <p>Hourly forecast</p>
+      </div>
+      <div id="hourlyList" class="hourly-list"></div>
+    </section>
+
+    <section class="note-card">
+      <strong>සටහන:</strong> Weather forecast 100% guarantee කරන්න බැහැ. මෙය API weather models මත පදනම් වූ අනාවැකි app එකක්. Internet connection අවශ්‍යයි.
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
